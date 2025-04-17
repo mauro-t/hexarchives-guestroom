@@ -1,0 +1,62 @@
+"use client";
+
+import {
+  useAnimate,
+  motion,
+  type AnimationPlaybackControlsWithThen,
+} from "motion/react";
+import { useEffect } from "react";
+
+export default function Credits() {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    let animation: AnimationPlaybackControlsWithThen;
+
+    function handle() {
+      const x = scope.current.scrollWidth;
+      animation?.stop();
+      animation = animate(
+        scope.current,
+        { x: [0, -x / 2] },
+        { duration: 45, ease: "linear", repeat: Infinity },
+      );
+    }
+
+    window.addEventListener("resize", handle);
+    handle();
+
+    return () => {
+      animation?.stop();
+      window.removeEventListener("resize", handle);
+    };
+  }, []);
+
+  return (
+    <section className="group relative">
+      <h2 className="top-1/2 left-1/2 z-10 px-3 font-akira text-fluid-lg md:absolute md:-translate-1/2 md:px-6">
+        <span className="transition-opacity md:group-hover:opacity-0">
+          credits
+        </span>
+      </h2>
+      <div className="w-full overflow-hidden opacity-75 transition-opacity md:opacity-20 md:group-hover:opacity-75">
+        <motion.div ref={scope} className="flex grayscale">
+          {[...new Array(11).keys()].map((k) => (
+            <img
+              key={k}
+              className="w-1/3 max-w-xs flex-none"
+              src={`/credits/${k + 1}.webp`}
+            />
+          ))}
+          {[...new Array(11).keys()].map((k) => (
+            <img
+              key={k}
+              className="w-1/3 max-w-xs flex-none"
+              src={`/credits/${k + 1}.webp`}
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

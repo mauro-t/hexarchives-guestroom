@@ -24,3 +24,10 @@ body {
   --font-akira-outline: var(--akira-outline);
   --font-ot-jubilee: var(--ot-jubilee-diamond);
 }
+
+@utility clip-video {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+  @variant md {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 7.5% 100%);
+  }
+}

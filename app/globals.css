@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "tailwind-scrollbar";
 
 body {
   background-image: url("/noise.webp");
@@ -7,7 +8,6 @@ body {
 }
 
 @theme {
-
   --breakpoint-xs: 30rem;
 
   --text-fluid-sm: clamp(0.7rem, 0.34vi + 0.63rem, 0.94rem);

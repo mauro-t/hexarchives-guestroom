@@ -1,6 +1,8 @@
+import ReactLenis from "lenis/react";
+
 export default function Modal() {
   return (
-    <div className="fixed inset-0 z-50 overflow-auto bg-black/75 px-3 text-[#F5F5F5] backdrop-blur-lg md:px-6 md:py-12">
+    <ReactLenis className="fixed inset-0 z-50 scrollbar-none overflow-auto bg-black/75 px-3 text-[#F5F5F5] backdrop-blur-lg md:px-6 md:py-12">
       <div className="relative -mx-3 aspect-video md:mx-0 md:aspect-3/1">
         <video
           src={`/videos/projects-preview.mp4`}
@@ -82,6 +84,6 @@ export default function Modal() {
           </div>
         </div>
       </div>
-    </div>
+    </ReactLenis>
   );
 }

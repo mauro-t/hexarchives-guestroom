@@ -33,11 +33,25 @@ export default function Credits() {
   }, []);
 
   return (
-    <section className="group relative">
-      <h2 className="top-1/2 left-1/2 z-10 px-3 font-akira text-fluid-lg md:absolute md:-translate-1/2 md:px-6">
-        <span className="transition-opacity md:group-hover:opacity-0">
+    <motion.section
+      initial="init"
+      whileInView="inView"
+      viewport={{
+        margin: "0px 0px -200px 0px",
+        once: true,
+      }}
+      transition={{ duration: 0.4, staggerChildren: 0.2 }}
+      variants={{ init: { opacity: 0 }, inView: { opacity: 1 } }}
+      className="group relative"
+    >
+      <h2 className="top-1/2 left-1/2 z-10 overflow-hidden px-3 font-akira text-fluid-lg md:absolute md:-translate-1/2 md:px-6">
+        <motion.span
+          variants={{ init: { y: "100%" }, inView: { y: "0%" } }}
+          transition={{ duration: 0.4 }}
+          className="inline-block transition-opacity md:group-hover:opacity-0"
+        >
           credits
-        </span>
+        </motion.span>
       </h2>
       <div className="w-full overflow-hidden opacity-75 transition-opacity md:opacity-20 md:group-hover:opacity-75">
         <motion.div ref={scope} className="flex grayscale">
@@ -57,6 +71,6 @@ export default function Credits() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

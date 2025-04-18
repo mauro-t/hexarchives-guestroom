@@ -1,34 +1,65 @@
+"use client";
+import { motion } from "motion/react";
+
 const Section = ({ label, videoSrc }: { label: string; videoSrc: string }) => (
   <li className="group contents">
-    <div className="flex items-center gap-2 p-6">
+    <motion.div
+      variants={{ init: { opacity: 0 }, inView: { opacity: 1 } }}
+      transition={{ duration: 0.7 }}
+      className="flex items-center gap-2 py-6 md:p-6"
+    >
       ⟐
       <div className="relative w-fit font-ot-jubilee text-fluid-base uppercase">
         {label}
         <span className="absolute bottom-0 left-0 h-px w-0 bg-black transition-[width] group-hover:w-full"></span>
       </div>
-    </div>
-    <div className="relative opacity-75 transition-opacity clip-video group-hover:opacity-100">
-      <video
-        src={`/videos/${videoSrc}`}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter] group-hover:grayscale-0"
-      />
-    </div>
+    </motion.div>
+    <motion.div
+      variants={{
+        init: { clipPath: "inset(0 100% 0 0)" },
+        inView: { clipPath: "inset(0 0 0 0)" },
+      }}
+      transition={{ duration: 0.7, at: "<" }}
+    >
+      <div className="relative h-full opacity-75 transition-opacity clip-video group-hover:opacity-100">
+        <video
+          src={`/videos/${videoSrc}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter] group-hover:grayscale-0"
+        />
+      </div>
+    </motion.div>
   </li>
 );
 
 export default function WhatAreYouLookingFor() {
   return (
-    <section className="my-12 px-3 md:my-32 md:px-6 lg:my-48">
-      <h2 className="font-akira text-fluid-lg">what are you looking for?</h2>
-      <ul className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-[auto_1fr]">
+    <motion.section
+      initial="init"
+      whileInView="inView"
+      viewport={{
+        margin: "0px 0px -200px 0px",
+        once: true,
+      }}
+      className="my-12 px-3 md:my-32 md:px-6 lg:my-48"
+      transition={{ staggerChildren: 0.2 }}
+    >
+      <h2 className="overflow-hidden font-akira text-fluid-lg">
+        <motion.div
+          variants={{ init: { y: "100%" }, inView: { y: "0%" } }}
+          transition={{ duration: 0.4 }}
+        >
+          what are you looking for?
+        </motion.div>
+      </h2>
+      <ul className="mt-12 grid grid-cols-[auto_1fr] gap-3 md:gap-6">
         <Section label="Projects" videoSrc="projects-preview.mp4" />
         <Section label="Spots" videoSrc="spots-preview.mp4" />
         <Section label="Showreel" videoSrc="showreel-preview.mp4" />
       </ul>
-    </section>
+    </motion.section>
   );
 }

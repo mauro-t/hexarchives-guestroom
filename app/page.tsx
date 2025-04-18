@@ -1,8 +1,10 @@
 import Credits from "@/components/credits";
 import Divider from "@/components/divider";
 import Footer from "@/components/footer";
+import GlitchText from "@/components/glitch-text";
 import Header from "@/components/header";
 import Modal from "@/components/modal";
+import ProceedDeeper from "@/components/proceed-deeper";
 import WhatAreYouLookingFor from "@/components/what-are-you-looking-for";
 import WhatsThis from "@/components/whats-this";
 
@@ -11,22 +13,15 @@ export default function Home() {
     <>
       <Header />
       <Divider>
-        <h1 className="font-ot-jubilee text-fluid-md uppercase">
-          Welcome to hex archive
-        </h1>
+        <GlitchText text="Welcome to hex archive" />
       </Divider>
       <WhatAreYouLookingFor />
       <Divider>
-        <div className="flex justify-between gap-4 font-ot-jubilee text-fluid-md uppercase md:w-full md:max-w-md">
-          <span>Feel</span>
-          <span>like</span>
-          <span>going</span>
-          <span>deeper?</span>
-        </div>
+        <ProceedDeeper />
       </Divider>
       <WhatsThis />
       <Credits />
-      <Modal />
+      {/* <Modal /> */}
       <Footer />
     </>
   );

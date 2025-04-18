@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import * as fonts from "@/lib/fonts";
 import "./globals.css";
+import ReactLenis from "lenis/react";
+import { PageLoadContextProvider } from "@/context/loading-context";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,11 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scrollbar-none">
       <body
         className={`${fonts.AkiraBold.variable} ${fonts.AkiraOutline.variable} ${fonts.OTJubileeDiamond.variable} min-h-svh text-black/75 antialiased`}
       >
-        {children}
+        <PageLoadContextProvider>
+          <ReactLenis root>{children}</ReactLenis>
+        </PageLoadContextProvider>
       </body>
     </html>
   );

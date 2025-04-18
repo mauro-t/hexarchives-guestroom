@@ -2,6 +2,7 @@ import Credits from "@/components/credits";
 import Divider from "@/components/divider";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import Modal from "@/components/modal";
 import WhatAreYouLookingFor from "@/components/what-are-you-looking-for";
 import WhatsThis from "@/components/whats-this";
 
@@ -25,6 +26,7 @@ export default function Home() {
       </Divider>
       <WhatsThis />
       <Credits />
+      <Modal />
       <Footer />
     </>
   );

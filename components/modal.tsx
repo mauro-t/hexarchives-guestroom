@@ -1,11 +1,7 @@
 "use client";
 
 import ReactLenis from "lenis/react";
-import {
-  AnimationPlaybackControlsWithThen,
-  motion,
-  useAnimate,
-} from "motion/react";
+import { motion, useAnimate } from "motion/react";
 import { useId, useLayoutEffect, useRef } from "react";
 
 const Item = ({
@@ -123,7 +119,6 @@ export default function Modal({
       videoRef.current.currentTime = getVideoTime();
       videoRef.current.play();
     }
-    let animation: AnimationPlaybackControlsWithThen | undefined;
     const firstBoundingBox = getFirstBoundingBox();
     const lastBoundingBox = lastRef.current.getBoundingClientRect();
 
@@ -132,14 +127,7 @@ export default function Modal({
       lastRef.current.style.height = "auto";
     }
 
-    function stopAnimation() {
-      animation?.stop();
-      setFinalState();
-    }
-
-    window.addEventListener("resize", stopAnimation);
-
-    animation = animate(
+    const animation = animate(
       lastRef.current,
       {
         x: [Number(firstBoundingBox?.x) - lastBoundingBox.x, 0],
@@ -154,7 +142,11 @@ export default function Modal({
       { duration: 1 },
     );
     animation.then(setFinalState, setFinalState);
-
+    function stopAnimation() {
+      animation?.stop();
+      setFinalState();
+    }
+    window.addEventListener("resize", stopAnimation);
     return () => {
       window.removeEventListener("resize", stopAnimation);
       stopAnimation();

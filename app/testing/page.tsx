@@ -77,7 +77,7 @@ const Modal = ({
       videoRef.current.currentTime = getVideoTime();
       videoRef.current.play();
     }
-    let animation: AnimationPlaybackControlsWithThen | undefined;
+    let animation: AnimationPlaybackControlsWithThen | undefined = undefined;
     const firstBoundingBox = getFirstBoundingBox();
     const lastBoundingBox = lastRef.current.getBoundingClientRect();
 

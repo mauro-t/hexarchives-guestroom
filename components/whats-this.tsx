@@ -21,7 +21,7 @@ export default function WhatsThis() {
               variants={{ init: { y: "100%" }, inView: { y: "0%" } }}
               transition={{ duration: 0.4 }}
             >
-              what's this?
+              what&lsquo;s this?
             </motion.div>
           </h2>
           <motion.div

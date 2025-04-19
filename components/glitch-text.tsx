@@ -14,7 +14,7 @@ export default function GlitchText({ text }: { text: string }) {
   useEffect(() => {
     let iterations = 0;
     if (!inView) return;
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       display.set(
         text
           .split("")

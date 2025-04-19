@@ -10,7 +10,6 @@ import { useId, useLayoutEffect, useRef } from "react";
 
 const Item = ({
   imageSrc,
-  videoSrc,
   title,
   description,
 }: {

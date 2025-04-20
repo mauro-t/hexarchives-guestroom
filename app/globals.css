@@ -4,6 +4,7 @@
 body {
   background-image: url("/noise.webp");
   background-color: #f5f5f5;
+  background-size: 50%;
   background-blend-mode: overlay;
 }
 

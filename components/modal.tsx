@@ -139,7 +139,7 @@ export default function Modal({
         width: [firstBoundingBox?.width, lastBoundingBox.width],
         height: [firstBoundingBox?.height, lastBoundingBox.height],
       },
-      { duration: 1 },
+      { duration: 0.7 },
     );
     animation.then(setFinalState, setFinalState);
     function stopAnimation() {

@@ -19,9 +19,7 @@ export default function RootLayout({
       <body
         className={`${fonts.AkiraBold.variable} ${fonts.AkiraOutline.variable} ${fonts.OTJubileeDiamond.variable} min-h-svh text-black/75 antialiased`}
       >
-        <PageLoadContextProvider>
-          <ReactLenis root>{children}</ReactLenis>
-        </PageLoadContextProvider>
+        <ReactLenis root>{children}</ReactLenis>
       </body>
     </html>
   );

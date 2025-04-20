@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import * as fonts from "@/lib/fonts";
 import "./globals.css";
 import ReactLenis from "lenis/react";
-import { PageLoadContextProvider } from "@/context/loading-context";
 
 export const metadata: Metadata = {
   title: "Create Next App",
